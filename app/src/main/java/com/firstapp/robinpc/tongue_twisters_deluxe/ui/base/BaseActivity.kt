@@ -72,13 +72,13 @@ abstract class BaseActivity : AppCompatActivity() {
             else
                 getString(R.string.native_ad_unit_id)
         )
-                .forNativeAd {
+            .forNativeAd {
 
-                    loadedNativeAds.add(it)
+                loadedNativeAds.add(it)
 
-                    if(!nativeAdsLoader.isLoading)
-                        onNativeAdsLoaded(loadedNativeAds)
-                }.build()
+                if(!nativeAdsLoader.isLoading)
+                    onNativeAdsLoaded(loadedNativeAds)
+            }.build()
 
         loadNativeAdsForCount()
     }

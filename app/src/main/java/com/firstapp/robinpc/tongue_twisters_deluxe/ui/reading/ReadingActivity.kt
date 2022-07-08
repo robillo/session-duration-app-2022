@@ -26,6 +26,7 @@ import com.firstapp.robinpc.tongue_twisters_deluxe.utils.Constants.Companion.UNI
 import com.firstapp.robinpc.tongue_twisters_deluxe.utils.TwisterPreferences
 import com.firstapp.robinpc.tongue_twisters_deluxe.utils.view_pager_transformers.ZoomOutSlideTransformer
 import com.google.android.gms.ads.formats.UnifiedNativeAd
+import com.google.android.gms.ads.nativead.NativeAd
 import kotlinx.android.synthetic.main.activity_reading.*
 import java.util.*
 import javax.inject.Inject
@@ -35,9 +36,6 @@ class ReadingActivity : BaseActivity() {
 
     @Inject
     lateinit var preferences: TwisterPreferences
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var adsPagerAdapter: AdsPagerAdapter
     private lateinit var twister: Twister
@@ -70,15 +68,6 @@ class ReadingActivity : BaseActivity() {
         }
     }
 
-    override fun onNativeAdsLoaded(loadedAds: ArrayList<UnifiedNativeAd>) {
-        shouldLoopViewPager = true
-        adsPagerAdapter = AdsPagerAdapter(supportFragmentManager, loadedAds, launchedFrom)
-        adsViewPager.visibility = View.VISIBLE
-        adsViewPager.adapter = adsPagerAdapter
-        adsViewPager.setPageTransformer(false, ZoomOutSlideTransformer())
-        loopViewPager()
-    }
-
     private fun loopViewPager() {
         loopHandler = Handler()
         runnable = Runnable {
@@ -97,6 +86,8 @@ class ReadingActivity : BaseActivity() {
         loopHandler.removeCallbacks(runnable)
     }
 
+    override fun onNativeAdsLoaded(loadedAds: ArrayList<NativeAd>) {}
+
     override fun getLayoutResId(): Int {
         return R.layout.activity_reading
     }
@@ -112,7 +103,7 @@ class ReadingActivity : BaseActivity() {
     }
 
     private fun initialiseAds() {
-        initAdLoader()
+        //initAdLoader()
     }
 
     private fun initVariables() {
@@ -120,9 +111,9 @@ class ReadingActivity : BaseActivity() {
     }
 
     private fun getVariables() {
-        (intent.getParcelableExtra(EXTRA_TWISTER) as Twister).let {
-            twister = it
-        }
+//        (intent.getParcelableExtra(EXTRA_TWISTER) as Twister).let {
+//            twister = it
+//        }
         launchedFrom = intent.getIntExtra(EXTRA_LAUNCHED_FROM, TYPE_DAY_TWISTER)
     }
 
@@ -326,25 +317,25 @@ class ReadingActivity : BaseActivity() {
     }
 
     private fun setComponent() {
-        DaggerReadingActivityComponent.builder()
-                .appComponent(getAppComponent())
-                .build().injectReadingActivity(this)
+//        DaggerReadingActivityComponent.builder()
+//            .appComponent(getAppComponent())
+//            .build().injectReadingActivity(this)
 
         viewModel = ViewModelProvider(this, viewModelFactory)
-                .get(ReadingActivityViewModel::class.java)
+            .get(ReadingActivityViewModel::class.java)
     }
 
     private var speechProgressListener: UtteranceProgressListener =
 
-            object: UtteranceProgressListener() {
+        object: UtteranceProgressListener() {
 
-                override fun onDone(utteranceId: String?) {
-                    markTwisterAsStopped()
-                }
-
-                override fun onError(utteranceId: String?) {}
-
-                override fun onStart(utteranceId: String?) {}
-
+            override fun onDone(utteranceId: String?) {
+                markTwisterAsStopped()
             }
+
+            override fun onError(utteranceId: String?) {}
+
+            override fun onStart(utteranceId: String?) {}
+
+        }
 }

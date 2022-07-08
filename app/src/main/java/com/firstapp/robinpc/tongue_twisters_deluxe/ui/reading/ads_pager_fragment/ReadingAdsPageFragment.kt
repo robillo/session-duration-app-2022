@@ -1,7 +1,6 @@
 package com.firstapp.robinpc.tongue_twisters_deluxe.ui.reading.ads_pager_fragment
 
 import android.view.View
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 
 import com.firstapp.robinpc.tongue_twisters_deluxe.R
@@ -10,13 +9,15 @@ import com.firstapp.robinpc.tongue_twisters_deluxe.utils.Constants.Companion.TYP
 import com.firstapp.robinpc.tongue_twisters_deluxe.utils.Constants.Companion.TYPE_DIFFICULTY
 import com.firstapp.robinpc.tongue_twisters_deluxe.utils.Constants.Companion.TYPE_LENGTH
 import com.google.android.gms.ads.formats.UnifiedNativeAd
+import com.google.android.gms.ads.nativead.NativeAd
+import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.cell_view_pager_ad.*
 import kotlinx.android.synthetic.main.cell_view_pager_ad.view.*
 
 class ReadingAdsPageFragment : BaseFragment() {
 
     private var launchedFrom: Int = TYPE_DAY_TWISTER
-    private lateinit var unifiedNativeAd: UnifiedNativeAd
+    private lateinit var unifiedNativeAd: NativeAd
 
     companion object {
         fun newInstance(): ReadingAdsPageFragment {
@@ -28,18 +29,24 @@ class ReadingAdsPageFragment : BaseFragment() {
         return R.layout.fragment_reading_ads_page
     }
 
+    override fun inject() {
+        AndroidSupportInjection.inject(this)
+    }
+
     override fun setup() {
         if(::unifiedNativeAd.isInitialized)
             loadUnifiedAd(unifiedNativeAd)
     }
 
-    fun setUnifiedAd(unifiedNativeAd: UnifiedNativeAd, launchedFrom: Int): ReadingAdsPageFragment {
+    override fun onNativeAdsLoaded(loadedAds: ArrayList<NativeAd>) {}
+
+    fun setUnifiedAd(unifiedNativeAd: NativeAd, launchedFrom: Int): ReadingAdsPageFragment {
         this.unifiedNativeAd = unifiedNativeAd
         this.launchedFrom = launchedFrom
         return this
     }
 
-    private fun loadUnifiedAd(unifiedNativeAd: UnifiedNativeAd) {
+    private fun loadUnifiedAd(unifiedNativeAd: NativeAd) {
         unifiedAdViewHolder.visibility = View.VISIBLE
 
         unifiedAdViewHolder.installAppTitleTv.text = unifiedNativeAd.headline
@@ -69,17 +76,17 @@ class ReadingAdsPageFragment : BaseFragment() {
                 when(launchedFrom) {
                     TYPE_DAY_TWISTER -> {
                         unifiedAdViewHolder.callToActionTv.setBackgroundResource(
-                                R.drawable.bg_call_to_action_day_twister
+                            R.drawable.bg_call_to_action_day_twister
                         )
                     }
                     TYPE_LENGTH -> {
                         unifiedAdViewHolder.callToActionTv.setBackgroundResource(
-                                R.drawable.bg_call_to_action_length_twister
+                            R.drawable.bg_call_to_action_length_twister
                         )
                     }
                     TYPE_DIFFICULTY -> {
                         unifiedAdViewHolder.callToActionTv.setBackgroundResource(
-                                R.drawable.bg_call_to_action_difficulty_twister
+                            R.drawable.bg_call_to_action_difficulty_twister
                         )
                     }
                 }

@@ -5,10 +5,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.firstapp.robinpc.tongue_twisters_deluxe.ui.reading.ads_pager_fragment.ReadingAdsPageFragment
 import com.google.android.gms.ads.formats.UnifiedNativeAd
+import com.google.android.gms.ads.nativead.NativeAd
 
 class AdsPagerAdapter(
         fragmentManager: FragmentManager,
-        private val loadedAds: ArrayList<UnifiedNativeAd>,
+        private val loadedAds: ArrayList<NativeAd>,
         private val pageType: Int
 ):
         FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:background="@drawable/vibrant_red_slightly_rounded">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp"
+        android:background="@drawable/white_slightly_rounded"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/oval_lightest_dull_yellow">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_hand_hello"
+                android:padding="3dp"
+                android:id="@+id/iconIv"/>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/black"
+                tools:text="Holy Cow!"
+                android:id="@+id/twisterNameTv"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_marginEnd="12dp"
+                android:lineSpacingMultiplier="0.9"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:text="@string/notification_description_compact"
+                android:id="@+id/notificationDescriptionTv"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

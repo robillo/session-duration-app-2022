@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress AndroidUnknownAttribute -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="@dimen/padding_16_dp"
+        android:paddingBottom="@dimen/padding_16_dp"
+        android:background="#534B85"
+        android:visibility="gone"
+        android:id="@+id/levelDetailsHolder">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_20_dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/levelNameTv"
+            app:layout_constraintBottom_toTopOf="@id/progressHolder"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            android:textColor="@color/white"
+            tools:textStyle="bold"
+            android:textSize="@dimen/font_14_sp"
+            android:textAllCaps="true"
+            fontPath="fonts/Montserrat-Black.ttf"
+            android:text="Level 1"
+            android:id="@+id/levelHeaderTv"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_8_dp"
+            app:layout_constraintBottom_toTopOf="@id/progressHolder"
+            app:layout_constraintStart_toEndOf="@id/levelHeaderTv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            android:textSize="@dimen/font_14_sp"
+            tools:textStyle="bold"
+            android:textAllCaps="true"
+            fontPath="fonts/Montserrat-Black.ttf"
+            android:textColor="#947CD7"
+            tools:text="warming up"
+            android:id="@+id/levelNameTv"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/completeStaticTv"
+            app:layout_constraintEnd_toEndOf="@id/completeStaticTv"
+            app:layout_constraintBottom_toTopOf="@id/completeStaticTv"
+            app:layout_constraintVertical_chainStyle="packed"
+            fontPath="fonts/Montserrat-Black.ttf"
+            android:textColor="#E99EE6"
+            tools:textStyle="bold"
+            android:textSize="@dimen/font_12_sp"
+            android:text="24%"
+            android:visibility="gone"
+            android:id="@+id/completionPercentageTv"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/padding_20_dp"
+            app:layout_constraintBottom_toTopOf="@id/progressHolder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/completionPercentageTv"
+            app:layout_constraintVertical_chainStyle="packed"
+            fontPath="fonts/Montserrat-SemiBold.ttf"
+            android:textSize="@dimen/font_10_sp"
+            android:textColor="#947CD7"
+            android:text="complete"
+            android:visibility="gone"
+            android:id="@+id/completeStaticTv"
+            tools:ignore="MissingPrefix" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#665CA4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
+            android:id="@+id/progressHolder">
+
+            <!--            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="6dp"-->
+            <!--                android:layout_marginTop="12dp"-->
+            <!--                android:layout_marginBottom="12dp"-->
+            <!--                app:rcMax="100"-->
+            <!--                app:rcProgress="40"-->
+            <!--                app:rcAnimationEnable="true"-->
+            <!--                app:rcAnimationSpeedScale="500"-->
+            <!--                app:rcProgressColor="#EF9350"-->
+            <!--                app:rcBackgroundColor="#2C2653"-->
+            <!--                android:layout_marginEnd="@dimen/padding_20_dp"-->
+            <!--                android:layout_marginStart="@dimen/padding_20_dp"-->
+            <!--                app:layout_constraintTop_toTopOf="parent"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                android:id="@+id/levelProgressBar"/>-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    <ImageView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        app:layout_constraintVertical_weight="1"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/levelDetailsHolder"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        android:id="@+id/backgroundImageView"-->
+    <!--        android:scaleType="centerCrop"-->
+    <!--        tools:ignore="ContentDescription" />-->
+
+    <!--    <ImageView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="1dp"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/levelDetailsHolder"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        android:background="@color/reading_activity_top_outline"-->
+    <!--        android:id="@+id/topOutlineIv"-->
+    <!--        tools:ignore="ContentDescription" />-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1"
+        android:scrollbars="none"
+        android:clipToPadding="false"
+        tools:background="@color/browser_actions_bg_grey"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintTop_toBottomOf="@id/levelDetailsHolder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/playerControlsHolder"
+        android:id="@+id/twisterContentScrollView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/holderTwisterMetadata">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="@dimen/padding_16_dp"
+                    android:id="@+id/iconBackgroundImageView"
+                    android:src="@color/white"
+                    app:civ_border_width="@dimen/padding_2_dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    tools:visibility="visible"
+                    android:visibility="visible"
+                    android:padding="@dimen/padding_6_dp"
+                    app:layout_constraintStart_toStartOf="@id/iconBackgroundImageView"
+                    app:layout_constraintEnd_toEndOf="@id/iconBackgroundImageView"
+                    app:layout_constraintTop_toTopOf="@id/iconBackgroundImageView"
+                    app:layout_constraintBottom_toBottomOf="@id/iconBackgroundImageView"
+                    android:id="@+id/twisterIconImageView"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    tools:text="LEVEL 1"
+                    android:layout_marginTop="12dp"
+                    android:textSize="12sp"
+                    tools:textStyle="bold"
+                    android:visibility="gone"
+                    android:textColor="#B0A4FC"
+                    android:layout_marginBottom="2dp"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:layout_constraintTop_toBottomOf="@id/iconBackgroundImageView"
+                    fontPath="fonts/Montserrat-Bold.ttf"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="MissingPrefix"
+                    android:id="@+id/levelNameNewTv"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.3"
+                    android:layout_marginTop="14dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/levelNameNewTv"
+                    app:layout_constraintStart_toEndOf="@id/iconBackgroundImageView"
+                    tools:text="@string/dummy_twister_header"
+                    tools:textStyle="bold"
+                    android:ellipsize="end"
+                    fontPath="fonts/Montserrat-Bold.ttf"
+                    tools:textColor="@color/black"
+                    android:textSize="16sp"
+                    tools:ignore="MissingPrefix"
+                    android:id="@+id/twisterHeaderTv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.3"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/padding_30_dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintTop_toBottomOf="@id/holderTwisterMetadata"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="@dimen/padding_20_dp"
+                tools:text="@string/dummy_tongue_twister_short"
+                fontPath="fonts/Montserrat-Bold.ttf"
+                android:id="@+id/twisterContentTv"
+                tools:ignore="MissingPrefix" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/padding_8_dp"
+        android:paddingBottom="@dimen/padding_8_dp"
+        android:background="@drawable/bg_white_blend_bottom_to_top"
+        tools:background="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/adsViewPager"
+        android:id="@+id/playerControlsHolder">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="@dimen/size_prev_next_control_buttons"
+            android:layout_height="@dimen/size_prev_next_control_buttons"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/playPauseHolder"
+            android:background="@drawable/reading_activity_controls_button"
+            android:id="@+id/previousHolder">
+
+            <ImageView
+                android:layout_width="@dimen/size_prev_next_control_buttons"
+                android:layout_height="@dimen/size_prev_next_control_buttons"
+                android:tint="@color/white"
+                android:src="@drawable/ic_previous_filled"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="ContentDescription,UseAppTint"
+                android:id="@+id/previousButtonIv"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="@dimen/size_play_pause_control_button"
+            android:layout_height="@dimen/size_play_pause_control_button"
+            app:layout_constraintHorizontal_weight="1.2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/previousHolder"
+            app:layout_constraintEnd_toStartOf="@id/nextHolder"
+            android:background="@drawable/reading_activity_controls_button"
+            android:id="@+id/playPauseHolder">
+
+            <ImageView
+                android:layout_width="@dimen/size_play_pause_control_button"
+                android:layout_height="@dimen/size_play_pause_control_button"
+                android:tint="@color/white"
+                tools:src="@drawable/ic_play_filled"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="ContentDescription,UseAppTint"
+                android:id="@+id/playPauseButtonIv"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="@dimen/size_prev_next_control_buttons"
+            android:layout_height="@dimen/size_prev_next_control_buttons"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/playPauseHolder"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/reading_activity_controls_button"
+            android:id="@+id/nextHolder">
+
+            <ImageView
+                android:layout_width="@dimen/size_prev_next_control_buttons"
+                android:layout_height="@dimen/size_prev_next_control_buttons"
+                android:tint="@color/white"
+                android:src="@drawable/ic_next_filled"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="ContentDescription,UseAppTint"
+                android:id="@+id/nextButtonIv"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/adsViewPager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constrainedHeight="true"
+        tools:layout_height="@dimen/padding_50_dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintHeight_max="130dp"
+        android:visibility="gone"
+        tools:background="@color/black"
+        tools:visibility="visible"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

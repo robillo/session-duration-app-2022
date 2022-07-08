@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.firstapp.robinpc.tongue_twisters_deluxe",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 61,
+      "versionName": "60.1",
+      "outputFile": "app-release.apk"
+    }
+  ],
+  "elementType": "File"
+}

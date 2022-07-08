@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress AndroidUnknownAttribute -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.splash.SplashActivity">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="@dimen/splash_loading_lottie"
+        android:layout_height="@dimen/splash_loading_lottie"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/loadingProgressTv"
+        app:lottie_loop="true"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:lottie_autoPlay="true"
+        tools:background="@color/black"
+        app:lottie_fileName="lottie/tongue_emoji.json"
+        android:id="@+id/loadingLottie"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/loadingProgressBar"
+        android:layout_marginBottom="@dimen/padding_18_dp"
+        android:id="@+id/loadingProgressTv"
+        android:textColor="@color/black"
+        android:text="@string/loading"
+        fontPath="fonts/WS-Medium.ttf"
+        android:textSize="@dimen/font_18_sp"
+        tools:ignore="MissingPrefix" />
+
+    <ProgressBar
+        android:layout_width="@dimen/loading_progress_bar_width"
+        android:layout_height="@dimen/loading_progress_bar_height"
+        android:layout_marginTop="@dimen/padding_18_dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/padding_80_dp"
+        tools:progress="60"
+        android:visibility="gone"
+        tools:visibility="visible"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progressDrawable="@drawable/loading_progress_bar"
+        android:id="@+id/loadingProgressBar"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

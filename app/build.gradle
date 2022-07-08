@@ -1,0 +1,109 @@
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 32
+
+    defaultConfig {
+        applicationId "com.firstapp.robinpc.tongue_twisters_deluxe"
+        minSdkVersion 21
+        targetSdkVersion 32
+        versionCode 62
+        versionName "60.2"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    kapt 'com.google.dagger:dagger-compiler:2.40'
+    kapt 'com.google.dagger:dagger-android-processor:2.40'
+    implementation 'com.google.dagger:dagger-android-support:2.40'
+
+    implementation 'com.google.dagger:dagger:2.40'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt 'com.google.dagger:dagger-compiler:2.40'
+
+    implementation 'com.google.code.gson:gson:2.8.9'
+
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.5.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+
+    implementation 'androidx.room:room-runtime:2.4.2'
+    kapt 'androidx.room:room-compiler:2.4.2'
+
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'io.github.inflationx:viewpump:2.0.3'
+
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    implementation 'jp.wasabeef:glide-transformations:4.3.0'
+    implementation 'jp.co.cyberagent.android:gpuimage:2.1.0'
+
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    implementation 'com.airbnb.android:lottie:4.2.2'
+
+    implementation 'androidx.work:work-runtime:2.7.1'
+    //implementation 'android.arch.work:work-runtime:1.0.1'
+
+    implementation 'com.google.android.gms:play-services-ads:21.0.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21'
+
+    implementation 'commons-io:commons-io:2.6'
+    implementation 'org.apache.commons:commons-lang3:3.9'
+
+    //kotlin: coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+
+    //kotlin: coroutine scopes
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0"
+
+    implementation 'com.amplitude:android-sdk:2.30.0'
+
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+
+    //firebase
+    //implementation platform('com.google.firebase:firebase-bom:26.1.1')
+    implementation 'com.google.firebase:firebase-core:21.0.0'
+    implementation 'com.google.firebase:firebase-dynamic-links:21.0.1'
+    implementation 'com.google.firebase:firebase-crashlytics:18.2.11'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.0.0'
+    implementation 'com.google.firebase:firebase-messaging-ktx:23.0.6'
+
+    //progress bar for tongue twister level progress indicator
+    //implementation 'com.akexorcist:round-corner-progress-bar:2.1.1'
+
+    //play billing library
+    implementation 'com.android.billingclient:billing:5.0.0'
+
+    testImplementation 'junit:junit:4.13.2'
+}
+
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress AndroidUnknownAttribute -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/padding_10_dp"
+    android:background="@drawable/bg_cell_twister_by_length">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/levelTwistersCountTv"
+        android:text="@string/dummy_twister_by_length_header"
+        tools:textStyle="bold"
+        android:layout_marginBottom="@dimen/padding_16_dp"
+        android:layout_marginTop="@dimen/padding_18_dp"
+        android:layout_marginStart="@dimen/padding_16_dp"
+        fontPath="fonts/WS-SemiBold.ttf"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_22_sp"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:id="@+id/levelHeaderTv"
+        tools:ignore="MissingPrefix" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_14_sp"
+        android:alpha="0.8"
+        app:layout_constraintTop_toBottomOf="@id/levelHeaderTv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/dummy_twisters_count_length"
+        android:layout_marginStart="@dimen/padding_16_dp"
+        android:layout_marginBottom="@dimen/padding_18_dp"
+        android:id="@+id/levelTwistersCountTv"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:alpha="0.4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/show_all"
+        android:textSize="@dimen/font_12_sp"
+        android:layout_marginTop="@dimen/padding_18_dp"
+        android:layout_marginEnd="@dimen/padding_16_dp"
+        android:id="@+id/showAllTv"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

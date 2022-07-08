@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#de4c0e</color>
+
+    <!-- home -->
+    <color name="bg_home">#F9F9F9</color>
+    <color name="free_twister_of_day_tv">#6A6A6A</color>
+    <color name="hi_there">#3556D3</color>
+    <color name="bg_day_twister_start">#EB273B</color>
+    <color name="bg_day_twister_end">#EA6130</color>
+    <color name="bg_day_twister_start_selected">#C91729</color>
+    <color name="bg_day_twister_end_selected">#CE4B1D</color>
+    <color name="length_header_static_text_home">#404040</color>
+    <color name="cell_length_level_start_color">#ED7933</color>
+    <color name="cell_length_level_end_color">#F3AA35</color>
+    <color name="cell_length_level_start_color_selected">#E66A22</color>
+    <color name="cell_length_level_end_color_selected">#F09F27</color>
+    <color name="cell_difficulty_level_start_color">#161968</color>
+    <color name="cell_difficulty_level_end_color">#48297B</color>
+    <color name="cell_difficulty_level_start_color_selected">#1E218F</color>
+    <color name="cell_difficulty_level_end_color_selected">#6332B3</color>
+
+    <!-- difficulty & level activity -->
+    <color name="length_level_header_bg">#663913</color>
+    <color name="difficulty_level_header_bg">#46406F</color>
+    <color name="bg_one_cell_length_level">#FDFDFD</color>
+    <color name="bg_two_cell_length_level">#F7F7F7</color>
+    <color name="free_twister_type">#24C431</color>
+    <color name="paid_twister_type">#FF2424</color>
+
+    <!-- reading activity -->
+    <color name="reading_activity_top_outline">#F1F1F1</color>
+    <color name="length_reading_activity_twister_color">#5E321C</color>
+    <color name="difficulty_reading_activity_twister_color">#252155</color>
+    <color name="day_twister_reading_activity_twister_color">#6C2A2A</color>
+
+    <color name="length_reading_activity_twister_color_dark">#663913</color>
+    <color name="difficulty_reading_activity_twister_color_dark">#46406F</color>
+    <color name="day_twister_reading_activity_twister_color_dark">#CF4A2C</color>
+
+    <color name="twister_percentage_read_color">#FF3100</color>
+
+    <!-- splash -->
+    <color name="progress_bar_default_splash">#E0E0E0</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="twister_cell_color_even">#FFFFFF</color>
+    <color name="twister_cell_color_odd">#F1F1F1</color>
+
+    <color name="separator_color">#C3F1F1F1</color>
+    <color name="premium_tv_bg">#FFD23E</color>
+
+    <color name="skeleton_zero">#FAFAFA</color>
+    <color name="skeleton_one">#F1F1F1</color>
+    <color name="skeleton_two">#D5D5D5</color>
+    <color name="skeleton_three">#AAAAAA</color>
+    <color name="skeleton_four">#808080</color>
+    <color name="skeleton_five">#4E4E4E</color>
+    <color name="skeleton_six">#2C2C2C</color>
+    <color name="skeleton_seven">#202020</color>
+
+    <color name="translucent_white_light">#9AFFFFFF</color>
+    <color name="translucent_white">#65FFFFFF</color>
+    <color name="translucent_white_dark">#34FFFFFF</color>
+    <color name="translucent_white_darker">#19FFFFFF</color>
+
+    <color name="translucent_black_light">#CD000000</color>
+    <color name="translucent_black">#99000000</color>
+    <color name="translucent_black_dark">#66000000</color>
+    <color name="translucent_black_darker">#34000000</color>
+
+    <color name="splash_loading_progress_color">#FFD23E</color>
+
+    <color name="twister_of_the_day_bg_start">#80285E</color>
+    <color name="twister_of_the_day_bg_end">#3B1C49</color>
+
+    <color name="status_bar_separator_difficulty">#2168DA</color>
+    <color name="status_bar_separator_length">#272727</color>
+
+    <color name="color_bg_twister_by_difficulty">#2E77ED</color>
+    <color name="color_progress_cell_twister_difficulty">#1D67E0</color>
+    <color name="nomber_bg_stroke_color">#707070</color>
+    <color name="color_unlocked_icon_tint">#33D88C</color>
+
+    <color name="twister_icon_background">#F8F8F8</color>
+    <color name="twister_icon_background_outline">#FFFCF7</color>
+
+    <color name="status_bar_reading_random">#D24A2C</color>
+    <color name="status_bar_reading_length">#66350C</color>
+    <color name="status_bar_reading_difficulty">#393459</color>
+
+    <color name="level_details_reading_random">#D24A2C</color>
+    <color name="level_details_reading_length">#66350C</color>
+    <color name="level_details_reading_difficulty">#393459</color>
+
+    <color name="level_progress_holder_reading_random">#EF6040</color>
+    <color name="level_progress_holder_reading_length">#8D4E18</color>
+    <color name="level_progress_holder_reading_difficulty">#595189</color>
+
+    <color name="level_name_reading_random">#FFBDAE</color>
+    <color name="light_yellow">#FFF8EB</color>
+    <color name="level_name_reading_length">#C98D18</color>
+    <color name="level_name_reading_difficulty">#9485F0</color>
+
+    <color name="completion_percentage_reading_random">#FFEA29</color>
+    <color name="completion_percentage_reading_length">#FBC743</color>
+    <color name="completion_percentage_reading_difficulty">#F473C1</color>
+
+    <color name="complete_text_reading_random">#FF8D74</color>
+    <color name="complete_text_reading_length">#BC671F</color>
+    <color name="complete_text_reading_difficulty">#947CD7</color>
+
+    <color name="level_progress_progress_reading_random">#EFC250</color>
+    <color name="level_progress_progress_reading_length">#F8AA36</color>
+    <color name="level_progress_progress_reading_difficulty">#50A3EF</color>
+
+    <color name="level_progress_background_reading_random">#A91F00</color>
+    <color name="level_progress_background_reading_length">#552B08</color>
+    <color name="level_progress_background_reading_difficulty">#2C2653</color>
+
+    <color name="metadata_bg_twister_random">#BE624E</color>
+    <color name="metadata_bg_twister_length">#724C2D</color>
+    <color name="metadata_bg_twister_difficulty">#69619A</color>
+
+    <color name="outline_metadata_bg_twister_random">#D24A2C</color>
+    <color name="outline_metadata_bg_twister_length">#66350C</color>
+    <color name="outline_metadata_bg_twister_difficulty">#393459</color>
+
+    <color name="bg_continue_playing_twister_widget">#DD5537</color>
+    <color name="dark_purple_one_dull">#524E6E</color>
+
+</resources>

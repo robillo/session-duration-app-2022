@@ -11,8 +11,8 @@ android {
         applicationId "com.firstapp.robinpc.tongue_twisters_deluxe"
         minSdkVersion 21
         targetSdkVersion 32
-        versionCode 62
-        versionName "60.2"
+        versionCode 63
+        versionName "60.3"
         multiDexEnabled true
     }
     buildTypes {

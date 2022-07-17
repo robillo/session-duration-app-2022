@@ -357,4 +357,6 @@
         tools:background="@color/black"
         tools:visibility="visible"/>
 
+    <include layout="@layout/include_full_screen_native_ad"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

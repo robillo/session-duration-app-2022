@@ -11,6 +11,10 @@
 
     <string name="ad_test_native_id" translatable="false">ca-app-pub-3940256099942544/2247696110</string>
     <string name="native_ad_unit_id" translatable="false">ca-app-pub-8103354595257586/6477914644</string>
+
+    <string name="ad_test_full_screen_native_ad">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="ad_full_screen_native_ad">ca-app-pub-8103354595257586/5877960055</string>
+
     <string name="test_interstitial_ad" translatable="false">
         ca-app-pub-3940256099942544/1033173712
     </string>

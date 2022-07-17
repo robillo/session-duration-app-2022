@@ -1,7 +1,7 @@
 package com.firstapp.robinpc.tongue_twisters_deluxe.ui.reading.reading_fragment
 
-import android.content.Context
-import android.graphics.Color
+import android.R.attr.bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
@@ -13,11 +13,16 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.palette.graphics.Palette
+import androidx.palette.graphics.Palette.PaletteAsyncListener
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -33,12 +38,20 @@ import com.firstapp.robinpc.tongue_twisters_deluxe.ui.reading.reading_fragment.a
 import com.firstapp.robinpc.tongue_twisters_deluxe.utils.AnalyticsUtil
 import com.firstapp.robinpc.tongue_twisters_deluxe.utils.Constants
 import com.firstapp.robinpc.tongue_twisters_deluxe.utils.view_pager_transformers.ZoomOutSlideTransformer
+import com.google.android.gms.ads.AdLoader
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MediaAspectRatio
 import com.google.android.gms.ads.nativead.NativeAd
+import com.google.android.gms.ads.nativead.NativeAdOptions
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.activity_reading.*
+import kotlinx.android.synthetic.main.include_full_screen_native_ad.*
+import kotlinx.android.synthetic.main.include_full_screen_native_ad.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.util.*
+
 
 class ReadingFragment : BaseFragment() {
 
@@ -131,6 +144,66 @@ class ReadingFragment : BaseFragment() {
         setViews()
         setClickListeners()
         initialiseAdsIfRequired()
+        setDummyNativeFullScreenAd()
+    }
+
+    private fun setDummyNativeFullScreenAd() {
+        val adOptions = NativeAdOptions.Builder()
+            .setMediaAspectRatio(MediaAspectRatio.PORTRAIT)
+            .build()
+
+        context?.let {
+            AdLoader.Builder(
+                it, getString(R.string.ad_full_screen_native_ad)
+            ).withNativeAdOptions(adOptions).forNativeAd { nativeAd ->
+                renderDummyFullScreenAd(nativeAd)
+            }.build().loadAd(AdRequest.Builder().build())
+        }
+    }
+
+    private fun renderDummyFullScreenAd(unifiedNativeAd: NativeAd) {
+        mainAdView.visibility = View.VISIBLE
+        mainAdView.mediaView = mainMediaView
+
+        mainMediaView.setOnHierarchyChangeListener(object :
+            ViewGroup.OnHierarchyChangeListener {
+            override fun onChildViewAdded(parent: View, child: View) {
+                if (child is ImageView) child.adjustViewBounds = true
+            }
+            override fun onChildViewRemoved(parent: View, child: View) {}
+        })
+
+        unifiedNativeAd.mediaContent?.let {
+            mainMediaView.setMediaContent(it)
+            it.mainImage?.let {
+                lifecycleScope.launch {
+                    Palette.Builder(it.toBitmap(100, 100)).generate {
+                        it?.let { palette ->
+                            mainMediaView.setBackgroundColor(palette.getDominantColor(R.color.black))
+                            mainAdView.setBackgroundColor(palette.getDominantColor(R.color.black))
+                        }
+                    }
+                }
+            }
+        }
+
+        mainAdView.titleHolderTv.text = unifiedNativeAd.headline
+        mainAdView.headlineView = mainAdView.titleHolderTv
+
+        unifiedNativeAd.body?.let {
+            mainAdView.subtitleHolderTv.text = it
+            mainAdView.bodyView = mainAdView.subtitleHolderTv
+        }
+        unifiedNativeAd.icon?.uri?.let {
+            mainAdView.iconIv.clipToOutline = true
+            Glide.with(this).load(it).into(mainAdView.iconIv)
+            mainAdView.iconView = mainAdView.iconIv
+        }
+        unifiedNativeAd.callToAction?.let {
+            mainAdView.actionTv.text = it
+            mainAdView.callToActionView = mainAdView.actionTv
+        }
+        mainAdView.setNativeAd(unifiedNativeAd)
     }
 
     private fun initialiseAdsIfRequired() {

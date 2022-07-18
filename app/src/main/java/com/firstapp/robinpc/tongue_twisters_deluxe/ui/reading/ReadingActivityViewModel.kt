@@ -35,4 +35,8 @@ class ReadingActivityViewModel @Inject constructor(
     fun fetchDifficultyLevelDetailsForLevel(levelId: String): LiveData<DifficultyLevel> {
         return difficultyLevelRepo.getDifficultyLevelForLevelTitle(levelId)
     }
+
+    fun getTwistersInRange(startIndex: Int, endIndex: Int): LiveData<List<Twister>> {
+        return twisterRepo.getTwistersInRange(startIndex, endIndex)
+    }
 }

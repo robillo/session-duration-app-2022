@@ -87,4 +87,6 @@
     <string name="notification_description_heads_up">Hello buddy! Here is a new tongue twister for you called %s! Click here and check it out!</string>
     <string name="notification_description_compact">Click to check out %s! A new tongue twister for you!</string>
     <string name="notification_description_expanded">Hello buddy! Here is a new tongue twister for you called %s! Click here and check it out!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

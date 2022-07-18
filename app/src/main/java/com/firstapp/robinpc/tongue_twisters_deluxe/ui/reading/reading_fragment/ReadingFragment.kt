@@ -1,7 +1,5 @@
 package com.firstapp.robinpc.tongue_twisters_deluxe.ui.reading.reading_fragment
 
-import android.R.attr.bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
@@ -22,7 +20,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.palette.graphics.Palette
-import androidx.palette.graphics.Palette.PaletteAsyncListener
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -49,7 +46,6 @@ import kotlinx.android.synthetic.main.include_full_screen_native_ad.*
 import kotlinx.android.synthetic.main.include_full_screen_native_ad.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import java.util.*
 
 
@@ -64,6 +60,9 @@ class ReadingFragment : BaseFragment() {
     companion object {
         private const val space = " "
         private const val EMPTY_STRING = ""
+        const val EXTRA_LEVEL_INDEX = "LEVEL_INDEX"
+        const val levelStartIndex = "Level Start Index"
+        const val levelEndIndex = "Level End Index"
         private const val EXTRA_TWISTER_INDEX = "TWISTER_INDEX"
         private const val EXTRA_LEVEL_HEADER = "LEVEL_HEADER"
         private const val UTTERANCE_ID = "TWISTER_UTTERANCE"

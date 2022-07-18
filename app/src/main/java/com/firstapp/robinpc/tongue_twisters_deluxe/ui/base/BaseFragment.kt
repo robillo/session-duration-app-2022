@@ -35,7 +35,7 @@ abstract class BaseFragment: Fragment() {
 
     companion object {
         val statusBarColorBeforeLaunch = "statusBarColorBeforeLaunch"
-        private const val adLoadCount = 5
+        private const val adLoadCount = 10
         enum class CountryType {
             INDIA, USA
         }

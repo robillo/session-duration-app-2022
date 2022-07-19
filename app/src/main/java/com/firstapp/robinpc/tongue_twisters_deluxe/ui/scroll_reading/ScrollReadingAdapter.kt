@@ -4,41 +4,45 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.firstapp.robinpc.tongue_twisters_deluxe.ui.reading.reading_fragment.ReadingFragment
+import com.firstapp.robinpc.tongue_twisters_deluxe.utils.Constants
 
 class ScrollReadingAdapter(
     fragmentManager: FragmentManager,
-    var fragments: MutableList<Fragment>,
+    var pageList: MutableList<PageData>,
     lifecycle: Lifecycle
 ) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
     override fun getItemCount(): Int {
-        return fragments.size
+        return pageList.size
     }
 
     override fun createFragment(position: Int): Fragment {
-        return fragments[position]
+        return ReadingFragment.newInstance(
+            pageList[position].twister?.id ?: -1, Constants.TYPE_DIFFICULTY
+        )
     }
 
-    fun add(index: Int, fragment: Fragment) {
-        fragments.add(index, fragment)
+    fun add(index: Int, pageData: PageData) {
+        pageList.add(index, pageData)
         notifyItemChanged(index)
     }
 
-    fun refreshFragment(index: Int, fragment: Fragment) {
-        fragments[index] = fragment
+    fun refreshFragment(index: Int, pageData: PageData) {
+        pageList[index] = pageData
         notifyItemChanged(index)
     }
 
     fun remove(index: Int) {
-        fragments.removeAt(index)
+        pageList.removeAt(index)
         notifyItemChanged(index)
     }
 
     override fun getItemId(position: Int): Long {
-        return fragments[position].hashCode().toLong()
+        return pageList[position].hashCode().toLong()
     }
 
     override fun containsItem(itemId: Long): Boolean {
-        return fragments.find { it.hashCode().toLong() == itemId } != null
+        return pageList.find { it.hashCode().toLong() == itemId } != null
     }
 }

@@ -12,6 +12,7 @@ import com.firstapp.robinpc.tongue_twisters_deluxe.ui.base.common_adapter.Common
 import com.firstapp.robinpc.tongue_twisters_deluxe.ui.home.HomeActivityViewModel
 import com.firstapp.robinpc.tongue_twisters_deluxe.ui.home.twisters.vertical_twisters_home.widgets.LevelHeaderChipWidget
 import com.firstapp.robinpc.tongue_twisters_deluxe.ui.reading.reading_fragment.ReadingFragment
+import com.firstapp.robinpc.tongue_twisters_deluxe.ui.scroll_reading.ScrollReadingFragment
 import com.firstapp.robinpc.tongue_twisters_deluxe.ui.splash.SplashActivity.Companion.EXTRA_LAUNCH_ELEMENT_INDEX
 import com.firstapp.robinpc.tongue_twisters_deluxe.ui.splash.SplashActivity.Companion.defaultIntValue
 import com.firstapp.robinpc.tongue_twisters_deluxe.utils.Constants
@@ -54,18 +55,25 @@ class VerticalTwistersHomeFragment : BaseFragment(), AdapterListener {
         }
     }
 
-    private fun fetchSpecificTwister(twisterId: Int, levelTitle: String) {
-        viewModel.getTwisterForIndex(twisterId).observe(viewLifecycleOwner) {
-            it?.let {
-                val fragment = ReadingFragment.newInstance(
-                    it.id, Constants.TYPE_DIFFICULTY, levelTitle, R.color.white
-                )
-                replaceFragment(
-                    R.id.containerView, fragment, childFragmentManager
-                )
-            }
-        }
+    private fun fetchSpecificLevelTwisters(levelId: Int, startIndex: Int, endIndex: Int) {
+        val fragment = ScrollReadingFragment.newInstance(levelId, startIndex, endIndex)
+        replaceFragment(
+            R.id.containerView, fragment, childFragmentManager
+        )
     }
+
+//    private fun fetchSpecificTwister(twisterId: Int, levelTitle: String) {
+//        viewModel.getTwisterForIndex(twisterId).observe(viewLifecycleOwner) {
+//            it?.let {
+//                val fragment = ReadingFragment.newInstance(
+//                    it.id, Constants.TYPE_DIFFICULTY, levelTitle, R.color.white
+//                )
+//                replaceFragment(
+//                    R.id.containerView, fragment, childFragmentManager
+//                )
+//            }
+//        }
+//    }
 
     private lateinit var levelChipsAdapter: CommonListAdapter
 
@@ -76,7 +84,9 @@ class VerticalTwistersHomeFragment : BaseFragment(), AdapterListener {
             if(level.startIndex <= fetchTwisterId && fetchTwisterId <= level.endIndex) {
                 levelIndex = index
                 level.isSelected = true
-                fetchSpecificTwister(fetchTwisterId, level.title)
+                fetchSpecificLevelTwisters(
+                    index, level.startIndex, level.endIndex
+                )
             }
         }
         levelChipsAdapter = CommonListAdapter(
@@ -85,7 +95,10 @@ class VerticalTwistersHomeFragment : BaseFragment(), AdapterListener {
             LevelHeaderChipWidget { _, position ->
                 list.forEachIndexed { index, level ->
                     list[index].isSelected = index == position
-                    if(index == position) fetchSpecificTwister(level.startIndex, level.title)
+                    if(index == position)
+                        fetchSpecificLevelTwisters(
+                            index, level.startIndex, level.endIndex
+                        )
                     levelChipsAdapter.submitList(list)
                 }
             }

@@ -42,6 +42,24 @@ import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdOptions
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.activity_reading.*
+import kotlinx.android.synthetic.main.activity_reading.adsViewPager
+import kotlinx.android.synthetic.main.activity_reading.completeStaticTv
+import kotlinx.android.synthetic.main.activity_reading.completionPercentageTv
+import kotlinx.android.synthetic.main.activity_reading.iconBackgroundImageView
+import kotlinx.android.synthetic.main.activity_reading.levelDetailsHolder
+import kotlinx.android.synthetic.main.activity_reading.levelHeaderTv
+import kotlinx.android.synthetic.main.activity_reading.levelNameNewTv
+import kotlinx.android.synthetic.main.activity_reading.levelNameTv
+import kotlinx.android.synthetic.main.activity_reading.nextHolder
+import kotlinx.android.synthetic.main.activity_reading.playPauseButtonIv
+import kotlinx.android.synthetic.main.activity_reading.playPauseHolder
+import kotlinx.android.synthetic.main.activity_reading.playerControlsHolder
+import kotlinx.android.synthetic.main.activity_reading.previousHolder
+import kotlinx.android.synthetic.main.activity_reading.progressHolder
+import kotlinx.android.synthetic.main.activity_reading.twisterContentTv
+import kotlinx.android.synthetic.main.activity_reading.twisterHeaderTv
+import kotlinx.android.synthetic.main.activity_reading.twisterIconImageView
+import kotlinx.android.synthetic.main.fragment_reading.*
 import kotlinx.android.synthetic.main.include_full_screen_native_ad.*
 import kotlinx.android.synthetic.main.include_full_screen_native_ad.view.*
 import kotlinx.coroutines.Dispatchers
@@ -72,7 +90,7 @@ class ReadingFragment : BaseFragment() {
             twisterIndex: Int,
             launchedFrom: Int,
             levelHeader: String = Constants.DEFAULT_LEVEL_HEADER,
-            statusBarColor: Int?
+            statusBarColor: Int? = R.color.white
         ) = ReadingFragment().apply {
             arguments = Bundle().apply {
                 putInt(EXTRA_TWISTER_INDEX, twisterIndex)
@@ -142,8 +160,6 @@ class ReadingFragment : BaseFragment() {
         setComponent()
         setViews()
         setClickListeners()
-        initialiseAdsIfRequired()
-        setDummyNativeFullScreenAd()
     }
 
     private fun setDummyNativeFullScreenAd() {
@@ -228,18 +244,23 @@ class ReadingFragment : BaseFragment() {
 
     fun updateTwister() {
         //todo
-
     }
 
     private fun getVariables() {
-        twisterIndex = arguments?.getInt(EXTRA_TWISTER_INDEX) ?: 0
+        twisterIndex = arguments?.getInt(EXTRA_TWISTER_INDEX) ?: -1
         launchedFrom = arguments?.getInt(EXTRA_LAUNCHED_FROM) ?: Constants.TYPE_DAY_TWISTER
         arguments?.getString(EXTRA_LEVEL_HEADER)?.let { levelHeader = it }
     }
 
     private fun setViews() {
         renderForLaunchSource()
-        setTwisterObserver(viewModel.getTwisterForIndex(twisterIndex))
+        if(twisterIndex == -1) {
+            parentView.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
+            otherContentHolder.visibility = View.GONE
+            initialiseAdsIfRequired()
+            setDummyNativeFullScreenAd()
+        }
+        else setTwisterObserver(viewModel.getTwisterForIndex(twisterIndex))
     }
 
     private fun renderForLaunchSource() {
@@ -386,6 +407,11 @@ class ReadingFragment : BaseFragment() {
     }
 
     private fun setClickListeners() {
+        if(twisterIndex == -1) {
+            parentView.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
+            otherContentHolder.visibility = View.GONE
+            return
+        }
         previousHolder.setOnClickListener {
             analyticsUtil.logPreviousClickedEvent(
                 AnalyticsUtil.readingScreen, currentTwister

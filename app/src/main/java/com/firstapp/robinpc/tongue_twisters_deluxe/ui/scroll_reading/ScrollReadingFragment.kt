@@ -15,6 +15,7 @@ import com.firstapp.robinpc.tongue_twisters_deluxe.ui.reading.reading_fragment.R
 import com.firstapp.robinpc.tongue_twisters_deluxe.ui.reading.reading_fragment.ReadingFragment.Companion.levelStartIndex
 import com.google.android.gms.ads.nativead.NativeAd
 import dagger.android.support.AndroidSupportInjection
+import kotlinx.android.synthetic.main.fragment_scroll_reading.*
 
 class ScrollReadingFragment : BaseFragment() {
 
@@ -38,18 +39,20 @@ class ScrollReadingFragment : BaseFragment() {
         initNativeAdsLoader()
         setViewModel()
         fetchTwistersForLevel()
-        //todo - fetch tongue twisters
     }
 
     private fun fetchTwistersForLevel() {
         viewModel.getTwistersInRange(levelStart, levelEnd)
             .observe(this) {
                 it?.let {
-                    it.forEach {
-                        pageList.add(PageData(it))
+                    it.forEachIndexed { index, twister ->
+                        if(index%5 == 0) pageList.add(PageData())
+                        pageList.add(PageData(twister))
                     }
-                    //scrollPagerAdapter = ScrollReadingAdapter()
-                    //todo - set scroll pager adapter for page data list
+                    scrollPagerAdapter = ScrollReadingAdapter(
+                        childFragmentManager, pageList, lifecycle
+                    )
+                    scrollReadingViewPager.adapter = scrollPagerAdapter
                 }
             }
     }

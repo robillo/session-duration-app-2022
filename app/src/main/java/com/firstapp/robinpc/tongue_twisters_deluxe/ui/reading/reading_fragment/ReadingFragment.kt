@@ -90,7 +90,7 @@ class ReadingFragment : BaseFragment() {
             twisterIndex: Int,
             launchedFrom: Int,
             levelHeader: String = Constants.DEFAULT_LEVEL_HEADER,
-            statusBarColor: Int? = R.color.white
+            statusBarColor: Int? = R.color.black
         ) = ReadingFragment().apply {
             arguments = Bundle().apply {
                 putInt(EXTRA_TWISTER_INDEX, twisterIndex)
@@ -154,6 +154,7 @@ class ReadingFragment : BaseFragment() {
     }
 
     override fun setup() {
+        setStatusBarColor(R.color.black, shouldShowLightStatusBar = false)
         analyticsUtil.logReadingScreenViewEvent()
         getVariables()
         initVariables()
@@ -282,7 +283,7 @@ class ReadingFragment : BaseFragment() {
 //            getColorFromId(R.color.status_bar_reading_difficulty)
 //        )
         iconBackgroundImageView.borderColor = getColorFromId(R.color.skeleton_one)
-        setStatusBarColor(R.color.white, BaseActivity.LIGHT_STATUS_BAR)
+        //setStatusBarColor(R.color.white, BaseActivity.LIGHT_STATUS_BAR)
         setLevelDetailsBackground(R.color.level_details_reading_difficulty)
         setLevelNameColor(R.color.level_name_reading_difficulty)
         setCompletionPercentageTextColor(R.color.completion_percentage_reading_difficulty)
@@ -304,7 +305,7 @@ class ReadingFragment : BaseFragment() {
 //            getColorFromId(R.color.status_bar_reading_length)
 //        )
         iconBackgroundImageView.borderColor = getColorFromId(R.color.skeleton_one)
-        setStatusBarColor(R.color.white, BaseActivity.LIGHT_STATUS_BAR)
+        //setStatusBarColor(R.color.white, BaseActivity.LIGHT_STATUS_BAR)
         setLevelDetailsBackground(R.color.level_details_reading_length)
         setLevelNameColor(R.color.level_name_reading_length)
         setCompletionPercentageTextColor(R.color.completion_percentage_reading_length)
@@ -326,7 +327,7 @@ class ReadingFragment : BaseFragment() {
 //            getColorFromId(R.color.status_bar_reading_random)
 //        )
         iconBackgroundImageView.borderColor = getColorFromId(R.color.skeleton_one)
-        setStatusBarColor(R.color.white, BaseActivity.LIGHT_STATUS_BAR)
+        //setStatusBarColor(R.color.white, BaseActivity.LIGHT_STATUS_BAR)
         setLevelDetailsBackground(R.color.level_details_reading_random)
         setLevelNameColor(R.color.level_name_reading_random)
         setCompletionPercentageTextColor(R.color.completion_percentage_reading_random)
@@ -377,8 +378,8 @@ class ReadingFragment : BaseFragment() {
                 if (isTextToSpeechSuccess(status)) {
                     isTextToSpeechLoaded = true
 
-                    if (!isTwisterPlaying)
-                        playPauseHolder.performClick()
+//                    if (!isTwisterPlaying)
+//                        playPauseHolder.performClick()
 
                     textToSpeech.language = Locale.ENGLISH
                     textToSpeech.setOnUtteranceProgressListener(speechProgressListener)

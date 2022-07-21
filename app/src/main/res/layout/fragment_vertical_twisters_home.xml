@@ -25,7 +25,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/bottomControlsHolder">
+        android:id="@+id/bottomControlsHolder"
+        android:visibility="gone">
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"

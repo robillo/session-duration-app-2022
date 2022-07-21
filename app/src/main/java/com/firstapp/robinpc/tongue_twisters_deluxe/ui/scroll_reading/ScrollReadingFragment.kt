@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.widget.ViewPager2
 import com.firstapp.robinpc.tongue_twisters_deluxe.R
 import com.firstapp.robinpc.tongue_twisters_deluxe.ui.base.BaseFragment
 import com.firstapp.robinpc.tongue_twisters_deluxe.ui.reading.ReadingActivityViewModel
@@ -16,6 +17,7 @@ import com.firstapp.robinpc.tongue_twisters_deluxe.ui.reading.reading_fragment.R
 import com.google.android.gms.ads.nativead.NativeAd
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_scroll_reading.*
+import java.lang.Math.abs
 
 class ScrollReadingFragment : BaseFragment() {
 
@@ -35,6 +37,7 @@ class ScrollReadingFragment : BaseFragment() {
     }
 
     override fun setup() {
+        setStatusBarColor(R.color.black, shouldShowLightStatusBar = false)
         extractLevel()
         initNativeAdsLoader()
         setViewModel()
@@ -46,13 +49,28 @@ class ScrollReadingFragment : BaseFragment() {
             .observe(this) {
                 it?.let {
                     it.forEachIndexed { index, twister ->
-                        if(index%5 == 0) pageList.add(PageData())
+                        if(index%4 == 0 && index != 0) pageList.add(PageData())
                         pageList.add(PageData(twister))
                     }
                     scrollPagerAdapter = ScrollReadingAdapter(
                         childFragmentManager, pageList, lifecycle
                     )
+
+                    val nextItemVisiblePx = resources.getDimension(R.dimen.padding_8_dp)
+                    val currentItemHorizontalMarginPx = resources.getDimension(R.dimen.padding_30_dp)
+                    val pageTranslationX = nextItemVisiblePx + currentItemHorizontalMarginPx
+                    val pageTransformer = ViewPager2.PageTransformer { page: View, position: Float ->
+                        page.translationY = -pageTranslationX * position
+                        page.scaleX = 1 - (0.24f * kotlin.math.abs(position))
+                        page.alpha = 1 - (0.24f * kotlin.math.abs(position))
+                    }
+                    scrollReadingViewPager.setPageTransformer(pageTransformer)
+
+                    scrollReadingViewPager.addItemDecoration(VerticalMarginItemDecoration(
+                        requireContext(), R.dimen.padding_14_dp
+                    ))
                     scrollReadingViewPager.adapter = scrollPagerAdapter
+                    scrollReadingViewPager.offscreenPageLimit = 1
                 }
             }
     }
